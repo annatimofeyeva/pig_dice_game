@@ -21,21 +21,21 @@ function oneThroughSix(min, max) {
 PlayerOne.prototype.addRound = function(number) {
   this.roundtally === 0;
   if (number === 1) {
-    return 0;
+    this.roundtally = 0;
   } else {
     this.roundtally += number;
-    return this.roundtally;
   }
+  return this.roundtally;
 }
 
 PlayerTwo.prototype.addRound = function(number) {
   this.roundtally === 0;
   if (number === 1) {
-    return 0;
+    this.roundtally = 0;
   } else {
     this.roundtally += number;
-    return this.roundtally;
   }
+    return this.roundtally;
 }
 
 PlayerOne.prototype.addToTotal = function() {
@@ -48,6 +48,14 @@ PlayerTwo.prototype.addToTotal = function() {
   return this.total;
 }
 
+PlayerOne.prototype.checkForWin = function() {
+    alert("Player 1 wins!");
+  }
+
+PlayerTwo.prototype.checkForWin = function() {
+    alert("Player 2 wins!");
+  }
+
 // user interface logic
 //Player 1 adds name:
 $(document).ready(function() {
@@ -58,12 +66,16 @@ $(document).ready(function() {
     var playerOne = new PlayerOne(playerOneName);
     //Player 1 clicks 'roll':
       $("button#rollbutton1").click(function(event) {
+        if (playerOne.total >= 100) {
+          playerOne.checkForWin();
+        };
         $(".rolled-dice1").empty();
         $(".rolled-dice1").append("<h3>You rolled a: </h3>")
         var thisClick = parseInt(oneThroughSix(1,6));
         $(".rolled-dice1").append("<h4>" + thisClick + "</h4>");
         var roll = playerOne.addRound(thisClick);
         if (roll === 0) {
+//
           $("#1roundtally").empty();
           $("#1roundtally").append("<h5> Round Tally: " + roll + "</h5>")
           $(".rolled-dice1").append("<h5>Too bad! You lose your points. Next player's turn.</h5>");
@@ -90,12 +102,16 @@ $(document).ready(function() {
       var playerTwo = new PlayerTwo(playerTwoName);
       //Player 1 clicks 'roll':
         $("button#rollbutton2").click(function(event) {
+          if (playerTwo.total >= 100) {
+            playerTwo.checkForWin();
+          };
           $(".rolled-dice2").empty();
           $(".rolled-dice2").append("<h3>You rolled a: </h3>")
           var thisClick = parseInt(oneThroughSix(1,6));
           $(".rolled-dice2").append("<h4>" + thisClick + "</h4>");
           var roll = playerTwo.addRound(thisClick);
           if (roll === 0) {
+//
             $("#2roundtally").empty();
             $("#2roundtally").append("<h5> Round Tally: " + roll + "</h5>")
             $(".rolled-dice2").append("<h5>Too bad! You lose your points. Next player's turn. Hit the stop button.</h5>");

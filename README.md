@@ -1,3 +1,9 @@
+# _Pig Dice Game_
+
+#### _A game of luck and skill, June 14th, 2017_
+
+#### By _**Anna Timofeeva and Emilie Thoreson**_
+
 ## SPECS:
 -  Write out how to play for users.  DONE
 - Program prompts users to enter their name in a form. DONE
@@ -12,15 +18,12 @@
     5b2: If player chooses 'stop': round_count is added to total. Now player 2's turn.
 - If object's total >= 40, game over, that object's name wins!
 
+## Setup/Installation Requirements
 
+* _Working web browser and link to GitHub
 
+## Known Bugs
 
+1. If user gets points (say 3), then rolls a 1, then hits stop, user will still get the 3 points they were supposed to lose.
 
-
-
-GENERATE RANDOM NUMBER BETWEEN 1-6:
-  function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+Copyright (c) 2017 **_Anna & Emilie_**
