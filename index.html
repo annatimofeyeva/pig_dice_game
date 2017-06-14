@@ -12,9 +12,7 @@
       <h1>Pig Dice Game</h1>
       <p>How to Play:</p>
       <ul>
-        <li>One player clicks the 'roll' button, receives number.</li>
-        <li>Another player clicks the 'roll' button, receives their number</li>
-        <li>Whoever has higher number is player 1.</li>
+        <li>Enter your names.</li>
         <li>If it is your turn, click the 'roll' button to begin.</li>
         <li>At any point, you may choose to 'stop' and collect your 'round tally' points.</li>
         <li>If you roll a 1, your turn is over and you collect no points.</li>
@@ -61,14 +59,33 @@
           </div>
       </div>
 
-      <div class="who-goes-first">
+
+    <div class="row">
+      <div class="col-lg-6" id="lightblue">
+        <div class="rolled-dice1" id="centerthis">
+        </div>
       </div>
+      <div class="col-lg-6" id="lightred">
+        <div class="rolled-dice2" id="centerthis">
+        </div>
+      </div>
+    </div>
 
 
-      <div class="buttonclass">
-        <button id="rollbutton" class="btn btn-lg" type="submit">ROLL</button>
-        <button id="stopbutton" class="btn btn-lg" type="submit">STOP</button>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="player1buttonclass">
+        <button id="rollbutton1" class="btn btn-lg" type="submit">ROLL</button>
+        <button id="stopbutton1" class="btn btn-lg" type="submit">STOP</button>
       </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="player2buttonclass">
+        <button id="rollbutton2" class="btn btn-lg" type="submit">ROLL</button>
+        <button id="stopbutton2" class="btn btn-lg" type="submit">STOP</button>
+      </div>
+    </div>
+  </div>
     </div>
   </body>
 </html>
