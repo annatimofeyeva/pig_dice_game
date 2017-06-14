@@ -18,7 +18,6 @@ function oneThroughSix(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 PlayerOne.prototype.addRound = function(number) {
   this.roundtally === 0;
   if (number === 1) {
@@ -44,6 +43,10 @@ PlayerOne.prototype.addToTotal = function() {
   return this.total;
 }
 
+PlayerTwo.prototype.addToTotal = function() {
+  this.total += this.roundtally;
+  return this.total;
+}
 
 // user interface logic
 //Player 1 adds name:
@@ -55,7 +58,6 @@ $(document).ready(function() {
     var playerOne = new PlayerOne(playerOneName);
     //Player 1 clicks 'roll':
       $("button#rollbutton1").click(function(event) {
-        playerOne.roundtally === 0;
         $(".rolled-dice1").empty();
         $(".rolled-dice1").append("<h3>You rolled a: </h3>")
         var thisClick = parseInt(oneThroughSix(1,6));
@@ -72,8 +74,10 @@ $(document).ready(function() {
       });
     //Player 1 clicks 'stop'
       $("button#stopbutton1").click(function(event) {
+        $("#1total").empty();
         var total = playerOne.addToTotal();
         $("#1total").append("<h5> TOTAL: " + total + "</h5>");
+        playerOne.roundtally = 0;
       });
   });
 
@@ -94,11 +98,17 @@ $(document).ready(function() {
           if (roll === 0) {
             $("#2roundtally").empty();
             $("#2roundtally").append("<h5> Round Tally: " + roll + "</h5>")
-            $(".rolled-dice2").append("<h5>Too bad! You lose your points. Next player's turn.</h5>");
+            $(".rolled-dice2").append("<h5>Too bad! You lose your points. Next player's turn. Hit the stop button.</h5>");
           } else {
             $("#2roundtally").empty();
             $("#2roundtally").append("<h5> Round Tally: " + roll + "</h5>")
           };
+        });
+        $("button#stopbutton2").click(function(event) {
+          $("#2total").empty();
+          var total = playerTwo.addToTotal();
+          $("#2total").append("<h5> TOTAL: " + total + "</h5>");
+          playerTwo.roundtally = 0;
         });
     });
   });
