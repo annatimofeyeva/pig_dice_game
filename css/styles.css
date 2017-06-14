@@ -1,0 +1,16 @@
+#player1css {
+  background-color: #92b9fc;
+}
+
+#player2css {
+  background-color: #d86e6e;
+}
+
+.buttonclass {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
